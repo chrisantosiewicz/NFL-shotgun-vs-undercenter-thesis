@@ -1,0 +1,113 @@
+---
+title: "Table of Contents"
+---
+
+```{=html}
+<div class="section-intro">
+  A complete guide to the sections of this thesis — click any entry to navigate directly to that page.
+</div>
+```
+
+## Shotgun or Under Center: A Machine Learning Framework for Situational Formation Decision-Making in the NFL
+
+**Chris Antosiewicz** | Syracuse University | 2026
+
+---
+
+```{=html}
+<div class="toc-section">
+  <span class="toc-num">1</span>
+  <div>
+    <a href="abstract.qmd">Abstract</a>
+    <span class="toc-desc">— A concise summary of the research questions, methodology, key findings, and contributions of this thesis.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">2</span>
+  <div>
+    <a href="intro.qmd">Introduction</a>
+    <span class="toc-desc">— Motivates the study of NFL formation usage, introduces the shotgun vs. under center decision, and outlines the analytical framework.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">3</span>
+  <div>
+    <a href="trends.qmd">Trends in League Usage (2011–2025)</a>
+    <span class="toc-desc">— Tracks the league-wide shift toward shotgun formations, disaggregates pass and run usage, and identifies the EPA paradox surrounding the growth in shotgun usage.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">4</span>
+  <div>
+    <a href="third_down.qmd">3rd and Short Analysis</a>
+    <span class="toc-desc">— Examines the conversion rate gap between formations on 3rd and short, explores streak and repetition patterns, and quantifies the value of unpredictability.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">5</span>
+  <div>
+    <a href="case_study.qmd">Formation Switching</a>
+    <span class="toc-desc">— Analyzes how teams that switch formations across the course of a game differ in play type distributions and conversion rates from those that stay fixed.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">6</span>
+  <div>
+    <a href="goalline.qmd">Goal Line Efficiency</a>
+    <span class="toc-desc">— Compares touchdown rates by formation and play type in goal line situations, examines variance, and explains the shotgun run paradox near the end zone.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">7</span>
+  <div>
+    <a href="descriptive_models.qmd">Modeling Formation Tendency</a>
+    <span class="toc-desc">— Builds logistic regression and decision tree models to predict formation choice, evaluates their results, and identifies why under center usage is harder to predict.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">8</span>
+  <div>
+    <a href="predictive_models.qmd">Predicting Best Play Calls</a>
+    <span class="toc-desc">— Details the Random Forest architecture, QB quality score construction, the scramble contamination problem, the simulation framework, and the reliability lookup system.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">9</span>
+  <div>
+    <a href="validation.qmd">Model Validation</a>
+    <span class="toc-desc">— Contextualizes R² values for EPA prediction, validates model performance across situational cells, analyzes systematic errors, and describes residual distributions.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">10</span>
+  <div>
+    <a href="results.qmd">Results & Key Findings</a>
+    <span class="toc-desc">— A summary of the most important numbers, tables, and conclusions from all sections of the thesis.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">11</span>
+  <div>
+    <a href="results.qmd">Limitations</a>
+    <span class="toc-desc">— A summary of the thesis' limitations.</span>
+  </div>
+</div>
+
+<div class="toc-section">
+  <span class="toc-num">12</span>
+  <div>
+    <a href="app.qmd">Recommendation App</a>
+    <span class="toc-desc">— An embedded interactive Shiny application that takes game-situation inputs and returns ranked formation-play call recommendations with uncertainty estimates.</span>
+  </div>
+</div>
+```

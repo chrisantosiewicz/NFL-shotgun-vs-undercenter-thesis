@@ -1,0 +1,31 @@
+---
+title: "Effects of Switching Formation"
+---
+
+```{=html}
+<div class="section-intro">
+  This section examines which teams switched formations most frequently, how formation-switching correlated with play type distributions, and uses the 2022 NFL season as a focused case study to illustrate how execution outweighs unpredictability. 
+</div>
+```
+
+## Formation Switching Behavior
+Examining efficiency on 3rd and short when repeating formations bring us to the most natural follow-up question, what happens when teams switch their formation? Analyzing plays where teams switched formation relative to their previous third and short attempt versus staying in the same formation reveals patterns that have direct implications for how coaches should think about formation sequencing rather than viewing each formation selection as an isolated decision. 
+
+![Conversion Rates for each Formation Pattern, 2016–2025](images/formation-switching-efficiency.png){fig-align="center"}
+
+![Switching Rates by result for each Formation Play Combination, 2016–2025](images/formation-switching-result.png){fig-align="center"}
+
+Examining formation switching patterns across the 2016-2025 reveals consistent strategic logic in how coaches sequence formations and call plays within each transition pattern. Coaches decided to switch from under center to shotgun about twice as often as switching from shotgun to under center, regardless of the outcome. Breaking this down by the specific prior play type reveals that the switching behavior is remarkably consistent within each formation regardless of whether the previous play was a run or pass. Shotgun Pass and Shotgun Run show nearly identical switching rates after both success and failure with 31.8 and 30.4 percent after failure, and 32.2 and 32.4 percent after success respectively. This suggests that coaches make formation switching decisions based on the formation itself rather than the specific play type that preceded it. The obvious preference for shotgun reflects the evolution of general shotgun usage league-wide.
+
+Across the decade, the run-pass distribution within each formation transition is very similar. Whether teams switch to or stay in shotgun, the majority of plays are passes, 67.0 percent and 64.7 percent respectively, demonstrating shotgun's inherent association with spread passing concepts regardless of how the formation is reached. We see an inverse relationship when teams switch from shotgun to under center, with 79.8 percent of plays being runs. The same dynamic exists when teams stay under center, running 78.1 percent of the time. These distributions provide evidence confirming the traditional idea that teams predominantly call under center when they want to run the ball and call shotgun when they want to pass.
+
+The conversion rates also validate the intuitive assumption that run plays on 3rd and short are more effective than pass plays. Table 3 shows that runs convert at meaningfully higher rates than passes across every formation transition pattern. Even when making what defenses might consider the most telegraphed play call, switching from shotgun to under center and running the ball, teams still converted at 69.4 percent, the highest conversion rate of any formation pattern and play combination in the dataset. These findings reinforce that short yardage remains a run-favorable situation regardless of formation context. The conversion rates for run plays across all formation patterns are very similar, while pass plays from shotgun are roughly 5% less effective than pass plays out of under center. The two lowest converting formation patterns and play types across the entire decade are passing out of shotgun at 52.4% and 52.8%, suggesting that it is the least effective of the four formation-play combinations in short yardage.
+
+## Why 2022?
+When examining the data, the 2022 season provides the richest case study in the dataset for understanding how formation switching interacts with play-calling predictability. Teams that switched to shotgun after using under center on the previous drive experienced a 10.8% dropoff in conversion rate on average, as shown below. 
+
+![Effect of Switching Formation on Conversion Rate, 2016–2025](images/formation-switching.png){fig-align="center"}
+![Play Type Distribution by Formation Pattern, 2022](images/playtype-predictability.png){fig-align="center"}
+![Conversion Rate Heatmap by Formation Pattern and Play Type,2022](images/3rdshort-conversion-heatmap.png){fig-align="center"}
+
+2022 serves as a great case study to illustrate the importance of executing the play, rather than trying to achieve a more even distribution of play types. Figure 6 shows the proportion of pass plays called out of Shotgun was a few percentage points below the decade average, suggesting that the passing out of shotgun was slightly less predictable. Despite that, the conversion rates shown in Figure 6 were 3-4% below the decade averages from Table 3. When switching to shotgun from under center, run plays converted at 61.3 percent, 5.2 percentage points below the decade average for that pattern. Conversely, the proportion of run plays called from Under Center was a few percentage points above the decade average, but they were still 3% more effective than the average when switching to Under Center and 9% more effective when staying under center. These trends collectively imply that above everything, establishing an efficient run game is essential for setting up success in key down and distance scenarios like third and short. Without it, defenses can commit to the pass against repeated shotgun concepts without being afraid of getting caught off guard by effectively designed runs from the shotgun. 

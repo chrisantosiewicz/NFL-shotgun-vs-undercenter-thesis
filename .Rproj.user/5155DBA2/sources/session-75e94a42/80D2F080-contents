@@ -1,0 +1,30 @@
+---
+title: "Abstract"
+toc: false
+---
+
+```{=html}
+<div class="abstract-container">
+
+  <p class="thesis-title">Shotgun or Under Center: A Machine Learning Framework for Situational Formation Decision-Making in the NFL</p>
+
+  <p class="author-name">Chris Antosiewicz</p>
+  <p class="institution">Syracuse University</p>
+  <p class="institution">Department of Sport Analytics</p>
+  <p class="institution">Thesis Advisor: Rodney Paul</p>
+  <p class="institution">2026</p>
+
+  <div class="divider"></div>
+
+  <div class="abstract-text">
+    This thesis analyzes the strategic decision between shotgun and under center formations in the National Football League using fifteen years of play-by-play data from 2011 through 2025. Through descriptive analysis of historical trends, logistic regression, decision tree modeling, and Random Forest simulation, I construct a formation recommendation system that estimates Expected Points Added and conversion probability for each of four formation-play type combinations – Shotgun Pass, Shotgun Run, Under Center Pass, and Under Center Run – across any down, distance, field position, and game state scenario. The system incorporates a quarterback quality composite metric, stochastic simulation across 10,000 iterations, and a reliability classification framework that communicates uncertainty transparently rather than generating false precision in situations without significant sample size. Wrapped into as an interactive Shiny application, the tool provides coaches and analysts with an evidence-based starting point for formation decisions grounded in historical NFL outcomes.
+  </div>
+
+  <div class="divider"></div>
+
+  <p style="font-size:0.88rem; color: var(--gray-dk);">
+    <strong>Keywords:</strong> NFL, formation tendency, Expected Points Added, Random Forest, play-by-play, play-calling, shotgun, under center, stochastic simulation
+  </p>
+
+</div>
+```

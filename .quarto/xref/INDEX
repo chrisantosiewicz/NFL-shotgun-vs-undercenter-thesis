@@ -1,0 +1,41 @@
+{
+  "abstract.qmd": {
+    "abstract.html": "43ad42ac"
+  },
+  "app.qmd": {
+    "app.html": "ad4b3fee"
+  },
+  "case_study.qmd": {
+    "case_study.html": "2590a151"
+  },
+  "descriptive_models.qmd": {
+    "descriptive_models.html": "a6be9981"
+  },
+  "goalline.qmd": {
+    "goalline.html": "232072e8"
+  },
+  "index.qmd": {
+    "index.html": "5c3f8c0b"
+  },
+  "intro.qmd": {
+    "intro.html": "2ff9b8b0"
+  },
+  "limitations.qmd": {
+    "limitations.html": "15790f84"
+  },
+  "predictive_models.qmd": {
+    "predictive_models.html": "5105aca5"
+  },
+  "results.qmd": {
+    "results.html": "f4332fb8"
+  },
+  "third_down.qmd": {
+    "third_down.html": "7bd84470"
+  },
+  "trends.qmd": {
+    "trends.html": "0c524de9"
+  },
+  "validation.qmd": {
+    "validation.html": "8bd58812"
+  }
+}

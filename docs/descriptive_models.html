@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Modeling Formation Tendency – NFL Formation Tendency Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">NFL Formation Tendency Analysis</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Table of Contents</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./abstract.html"> 
+<span class="menu-text">Abstract</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./intro.html"> 
+<span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./trends.html"> 
+<span class="menu-text">Trends in League Usage</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./third_down.html"> 
+<span class="menu-text">3rd and Short Analysis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./case_study.html"> 
+<span class="menu-text">2022 Case Study</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./goalline.html"> 
+<span class="menu-text">Goal Line Efficiency</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./descriptive_models.html" aria-current="page"> 
+<span class="menu-text">Modeling Formation Tendency</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./predictive_models.html"> 
+<span class="menu-text">Predicting Best Play Calls</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./validation.html"> 
+<span class="menu-text">Model Validation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./results.html"> 
+<span class="menu-text">Results &amp; Key Findings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./app.html"> 
+<span class="menu-text">Recommendation App</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./abstract.html"> 
+<span class="menu-text">Chris Antosiewicz</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview-descriptive-vs.-predictive-modeling" id="toc-overview-descriptive-vs.-predictive-modeling" class="nav-link active" data-scroll-target="#overview-descriptive-vs.-predictive-modeling">Overview: Descriptive vs.&nbsp;Predictive Modeling</a></li>
+  <li><a href="#logistic-regression-model-quantifying-formation-drivers" id="toc-logistic-regression-model-quantifying-formation-drivers" class="nav-link" data-scroll-target="#logistic-regression-model-quantifying-formation-drivers">Logistic Regression Model: Quantifying Formation Drivers</a></li>
+  <li><a href="#precision-recall-and-the-under-center-prediction-problem" id="toc-precision-recall-and-the-under-center-prediction-problem" class="nav-link" data-scroll-target="#precision-recall-and-the-under-center-prediction-problem">Precision, Recall, and the Under Center Prediction Problem</a></li>
+  <li><a href="#improving-specificity-with-decision-trees" id="toc-improving-specificity-with-decision-trees" class="nav-link" data-scroll-target="#improving-specificity-with-decision-trees">Improving Specificity With Decision Trees</a></li>
+  <li><a href="#decision-tree-model" id="toc-decision-tree-model" class="nav-link" data-scroll-target="#decision-tree-model">Decision Tree Model</a></li>
+  <li><a href="#model-disagreements" id="toc-model-disagreements" class="nav-link" data-scroll-target="#model-disagreements">Model Disagreements</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Modeling Formation Tendency</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="section-intro">
+  This section builds logistic regression and decision tree models to predict which formation a team will use in a given situation, evaluates how well situational factors explain formation choice, and diagnoses why under center usage is particularly difficult to predict.
+</div>
+<section id="overview-descriptive-vs.-predictive-modeling" class="level2">
+<h2 class="anchored" data-anchor-id="overview-descriptive-vs.-predictive-modeling">Overview: Descriptive vs.&nbsp;Predictive Modeling</h2>
+<p>Having established the historical context for formation evolution and situational tendencies, the analysis now turns to quantifying the situational drivers of formation selection with greater statistical precision. This descriptive modeling phase serves a dual purpose: it validates that the situational variables available in the nflfastR dataset are genuinely predictive of formation choice, and it produces interpretable coefficient estimates that quantify the significance of each factor’s influence on the shotgun versus under center decision.</p>
+<p>The modeling dataset was constructed from plays spanning the 2016 through 2025 seasons, filtered to standard run and pass attempts and cleaned of special teams plays, penalties, kneels, and spikes. An 80-20 temporal train-test split was applied, with seasons 2016 through 2023 comprising the training set of 269,903 plays and seasons 2024 through 2025 forming the test set of 68,343 plays. This segmentation was chosen to capture relevant historical trends without overfitting on the high under center usage of the early 2010’s, and provide a large enough sample size for all critical down and distance scenarios to generalize for future seasons with evolving offensive and defensive tendencies. The training set showed 65.8 percent shotgun usage while the test set showed 68.4 percent, a modest distributional shift consistent with the continued growth in shotgun adoption documented in the trend analysis.</p>
+<p>Six predictor variables were included across all formation tendency models: down as a categorical variable with four levels, yards to go as a continuous variable, field position measured as yards from the opponent’s end zone, score differential as a signed continuous variable, quarter, and seconds remaining in the half as a continuous variable. These variables collectively capture the game state information most directly relevant to formation decisions without requiring proprietary data unavailable in the public dataset.</p>
+</section>
+<section id="logistic-regression-model-quantifying-formation-drivers" class="level2">
+<h2 class="anchored" data-anchor-id="logistic-regression-model-quantifying-formation-drivers">Logistic Regression Model: Quantifying Formation Drivers</h2>
+<p>The first modeling approach applied binary logistic regression predicting the shotgun indicator(0 or 1) from the six situational variables. Logistic regression is well-suited to this initial descriptive purpose because its coefficients are directly interpretable as log-odds ratios that directly describe how each predictor impacts the probability of calling shotgun in terms coaches and analysts can intuitively grasp.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lm-coefficients.png" class="img-fluid figure-img"></p>
+<figcaption>Logistic Regression Coefficient and Odds Table</figcaption>
+</figure>
+</div>
+<p>The model achieved an overall accuracy of 70.5 percent on the test set with an AUC of 0.749, indicating the situational variables collectively explain a substantial portion of the formation selection decision. All coefficient estimates were statistically significant at p &lt; 0.0001 apart from quarter at 0.13, confirming that almost every predictor adds genuine information about formation likelihood beyond what the others capture.</p>
+<p>The odds ratios tell the most direct story about formation selection logic. The third down coefficient produces an odds ratio of 14.67, meaning that holding all other variables constant, a play on third down is nearly fifteen times more likely to be run from shotgun than a comparable first down play. This is the largest single effect in the model by a considerable margin and reflects the NFL’s near-universal adoption of shotgun as the default formation on critical conversion downs. Second down shows an odds ratio of 2.74 and fourth down 3.72, both substantial but considerably smaller than the third down effect. Despite fourth down carrying higher stakes, its odds ratio is lower because fourth down situations have a higher proportion of short yardage situations.</p>
+<p>The yards to go coefficient produces an odds ratio of 1.18 per yard, meaning each additional yard needed for a first down increases the probability of shotgun being called by 18 percent. This compounds across the realistic range of distances. A team facing ten yards to go is approximately 4.4 times(1.18^9) more likely to align in shotgun than a team facing one yard to go in the same other situational context. The score differential coefficient of -0.035 confirms that trailing teams are slightly more likely to deploy shotgun, with each point of deficit incrementally increasing shotgun probability, a relationship that makes intuitive sense as when teams are down they prioritize getting as much yardage as possible per play.</p>
+<p>While the coefficients for field position and time remaining in the half seem meaningless at -.0025 and -.0005 respectively, using the odd ratios to calculate the difference helps quantify what they actually mean. A team at the opponents’ 1 yard line is roughly 11.5%(0.997549^-1) less likely to use shotgun than at the 50 yard line, ceteris paribus. While the effect per yard is negligible, it accumulates across the field such that a team at the opponent’s one-yard line shows meaningfully lower shotgun probability than the same team at midfield. With 1,680 seconds being the difference between the start of a half at 1,800 seconds and the two minute warning at 120 seconds, a team with a full half ahead of them is 43.2%(0.99951680^-1) less likely to use shotgun than a team in the final two minutes, ceteris paribus. This relationship captures what we see on TV, that in the two-minute drill, shotgun usage is much more prominent, reflected in the decision tree analysis below.</p>
+</section>
+<section id="precision-recall-and-the-under-center-prediction-problem" class="level2">
+<h2 class="anchored" data-anchor-id="precision-recall-and-the-under-center-prediction-problem">Precision, Recall, and the Under Center Prediction Problem</h2>
+<p>While overall accuracy of 70.4 percent appears strong for a six-variable model, disaggregating performance by predicted class reveals an important asymmetry with direct implications for understanding how predictable each formation type has become. The model achieved a recall of 84.7% for shotgun plays. However, the effective recall was far weaker for under center plays, with the model correctly identifying only 39.6% of actual under center plays as captured by the specificity metric.</p>
+<p>To look further into this, I wanted to examine when the model was highly confident about its prediction, which I defined as predicted probability below 0.33(confident in under center) or above 0.67(confident in shotgun). Restricting evaluation to the 48.6 percent of predictions where the logistic model expressed high confidence, overall accuracy improved to 85.1 percent with shotgun recall of 97.4%, but the distribution of confident predictions was almost entirely shotgun. Of 33,242 high-confidence predictions, 31,364 were confident shotgun calls and only 1,878 were confident under center calls. Most significantly, the recall for under center plays dropped to 21.6%, reinforcing that the model’s predictive power is asymmetric in a way that reflects the asymmetric usage of each formation type in the modern NFL.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lm-confidence.png" class="img-fluid figure-img"></p>
+<figcaption>Stacked Bar Chart Showing Model Confidence in Shotgun vs.&nbsp;Actual Formation Used</figcaption>
+</figure>
+</div>
+<p>Notably, the logistic model “confidently” predicted only ~5% of the actual under center plays, and was “unsure” of its prediction for ~75% of actual under center plays compared to only ~40% of shotgun plays. This drastic difference reflects the reality that under center usage has become so situationally selective, depending mainly on the coaches schematic preferences, that it is difficult to anticipate from game state variables alone. When teams deploy under center formations in the modern NFL, they do so in situations that a league-wide model trained on average behavior cannot consistently recognize as under-center situations. While it’s important to note that the performance of the linear model is skewed as the training data has a majority of shotgun play calls(65.8%), it is still a meaningful result.</p>
+</section>
+<section id="improving-specificity-with-decision-trees" class="level2">
+<h2 class="anchored" data-anchor-id="improving-specificity-with-decision-trees">Improving Specificity With Decision Trees</h2>
+<p>The logistic regression’s core limitation was its specificity of 39.6 percent on under center plays because linear probability models cannot capture the threshold and interaction effects that govern under center usage in specific situations. A decision tree classifier was trained on the same features and training data, offering the advantage of automatic non-linear partitioning that can identify the specific combinations of situational variables where under center becomes the preferred formation choice. A baseline tree was trained with a complex parameter of 0.001 and max depth of 5.</p>
+<p><img src="images/base-tree.png" class="img-fluid quarto-figure quarto-figure-center" alt="Base Tree Model"> To optimize the tree, I then manually tuned hyperparameters sequentially across complexity parameter, maximum depth, minimum split size, and minimum bucket size. The complexity parameter was evaluated across values from 0.00001 to 0.005, with accuracy and AUC both the same for each cp value. 0.002 was chosen as the value with maximum accuracy and specificity. Maximum depth testing showed accuracy plateaued after depth 10. Minimum split was set at 9,000 observations, 3.33% of the training data, ensuring that each node split was supported by sufficient observations to represent a genuine population pattern rather than overfitting on a tiny niche of data. Minimum bucket was set at 4,000 observations per leaf node after testing values from 500 to 7,000. For all hyperparameters, when choosing between values I accepted 0.1% drops in overall accuracy for at least one additional percent of specificity.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/log_tree_performance.png" class="img-fluid figure-img"></p>
+<figcaption>Performance Comparison Between Logistic Regression and Optimized Tree</figcaption>
+</figure>
+</div>
+<p>The optimized tree achieved an improved accuracy of 71.4% and AUC of 0.757 on the test set. More importantly for this application, specificity improved dramatically from 39.6% to 64.3%. This improvement came at the cost of recall declining from 84.7 to 74.7 percent, reflecting the precision-recall tradeoff inherent in improving under center detection. The log loss from 0.537 to 0.522, confirming that the tree’s probability estimates were better calibrated overall.</p>
+</section>
+<section id="decision-tree-model" class="level2">
+<h2 class="anchored" data-anchor-id="decision-tree-model">Decision Tree Model</h2>
+<p><img src="images/tree_visual.png" class="img-fluid quarto-figure quarto-figure-center" alt="Optimized Decision Tree"> The decision tree’s structure itself communicates how teams actually select formations in ways that complement the logistic regression’s coefficient estimates. The root split on down is expected with third down immediately routing 20.5 percent of all plays into a high-shotgun node with 88.9 percent shotgun probability, compared to 59.8 percent for all other downs. The most revealing subsequent splits occur within the first and second down subsets where formation choice is most contested.</p>
+<p>Within plays not on third down, the second major split occurs at half seconds remaining below 119.5 seconds – the two-minute warning threshold. Plays within the final two minutes of a half show 89.1 percent shotgun probability, quantifying the near-complete abandonment of under center in clock-management situations. For plays outside the two-minute drill, the tree’s next split involves yards to go exceeding 10.5, routing long-distance plays into an 80.8 percent shotgun node that reflects the pass-oriented response to difficult distances.</p>
+<p>The most meaningful split for understanding when teams choose under center occurs deeper in the tree within the balanced score differential, normal time remaining, and manageable distance subpopulation. Here the tree splits on score differential below -7.5, identifying situations where teams are trailing by more than one touchdown increases shotgun probability to 68.3%. For one-possession game scenarios that comprise most offensive plays, plays on first, second, and fourth down show a near-even 50.1 to 49.9 split between shotgun and under center that captures the genuine formation flexibility that exists on standard plays away from the two-minute drill and extreme score situations. The tree identified that under center dominates on first down and fourth down, in short to medium yardage scenarios, and when teams with a big lead try to run down the clock.</p>
+<p>The tree ranked variable importance as: Down – 8576.57, Yards to Go – 7330.60, Seconds Remaining in Half – 4377.81, Score Differential – 2179.89, and Yard Line – 458.64.</p>
+</section>
+<section id="model-disagreements" class="level2">
+<h2 class="anchored" data-anchor-id="model-disagreements">Model Disagreements</h2>
+<p>The models disagreed on 19.7% of test set plays, 13,455 plays where the logistic regression and optimized tree predicted different formation outcomes. In the situations where disagreement was most frequent, the decision tree was correct more often. 1st and long(7-10 yards), 3rd and short, and 2nd and medium made up 88% of those disagreements, with 1st and long specifically making up 65%. On 1st and long, the tree correctly predicted formation in 51.6% of contested cases against the logistic model’s 48.4 percent. On third and short, the tree’s advantage grew to 59.9 versus 40.1 percent, where the tree’s ability to model the threshold interaction between the short-yardage context and formation preference clearly outperformed the logistic model’s linear approximation.</p>
+<p>##Transition to Predictive Modeling The descriptive modeling established two foundational conclusions that directly motivate the predictive structure developed in the following section. First, formation selection is substantially predictable from situational variables, with the optimized decision tree correctly classifying 71.4% of plays. That confirms the six situational features carry genuine information about coaching decisions. Second, and more importantly for the recommendation system, the under center prediction problem revealed that formations are used selectively enough that they retain situational specificity and strategic value.</p>
+<p>The logistic model’s difficulty in predicting under center usage is not a failure but a demonstration that under center has become a specialized formation closely tied to coach preferences, where even a well-tuned model cannot consistently anticipate it. If under center usage is inherently less predictable from game state variables, meaning coaches call it in ways that situational data alone cannot fully explain, then performance advantages observed in short yardage, goal line, and formation-switching contexts are likely inflated in general comparisons.</p>
+<p>Under-center formations are used selectively in situations where coaches perceive tactical advantages like short-yardage power running with elite offensive line personnel, meaning observed under-center performance reflects both the formation’s effectiveness and the favorability of situations in which coaches choose to employ it. The predictive models must account for this by estimating expected outcomes for each formation-play type combination while acknowledging that historical usage patterns embed strategic information that raw situational variables cannot fully capture.</p>
+<p>The following section switches the focus to developing four Random Forest models predicting Expected Points Added and four parallel models predicting yards gained for each formation-play type combination, trained on the 2016 through 2023 seasons and evaluated against a 2024 through 2025 test set. Together these models form a play recommendation system, translating the situational patterns documented in this descriptive analysis into actionable formation-specific outcome predictions with associated uncertainty estimates.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

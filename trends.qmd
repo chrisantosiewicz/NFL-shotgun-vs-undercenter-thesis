@@ -1,0 +1,28 @@
+---
+title: "Trends in League Usage (2011–2025)"
+---
+
+```{=html}
+<div class="section-intro">
+  This section documents the historical shift in NFL formation usage from 2011 to 2025, separates pass and run trends within each formation, and explores the EPA paradox that emerges when shotgun dominance is examined through an efficiency lens.
+</div>
+```
+
+## The Rise of the Shotgun Formation
+
+One of the most visually striking findings from the play-by-play data spanning 2011 through 2025 is the scale and consistency of the NFL's shift toward shotgun formations. In 2011, 40.7 percent of all offensive plays were run from shotgun — a formation then associated primarily with passing situations and two-minute drills. This evolution was catalyzed by an influx of mobile quarterbacks and the adoption of more college-style spread schemes designed to aid the development of college quarterbacks. This resulted in a near 20% jump from 2011-2013, followed by a more gradual and linear increase before peaking in 2023 at 72.2 percent, representing a 31.4% increase in shotgun usage across just twelve seasons.
+
+![Shotgun usage rate across the NFL, 2011–2025](images/league_usage_trends.png){fig-align="center"}
+
+The data in Figure 1 illustrates this evolution across the full fifteen-year window. Shotgun usage notably fell back to 59.4 percent after reaching 64.3 percent the prior season, before resuming its upward trajectory through 2020-2022 where it stabilized in the 66-68 percent range. The 2023 season represented a new peak at 72.2 percent, with a slight pullback in 2024 and 2025. These momentary declines represent the effect of defensive coordinators inevitably adapting their personnel and schemes to neutralize the formation's advantages.The aggregate trend, however, doesn’t illustrate the meaningful trends for passing and running plays. Disaggregating by play type reveals that the shotgun revolution unfolded along two parallel but distinct tracks.
+
+## Pass vs. Run Disaggregation
+![Shotgun usage rate across the NFL by play type, 2011–2025](images/league_usage_playtype.png){fig-align="center"}
+
+For passing plays, shotgun was already the default in 2011 at 58.4 percent, and the trajectory moved slowly but steadily toward complete dominance, reaching 86.2 percent by 2023. The more dramatic story is in the running game. In 2011, only 16.5 percent of run plays originated from shotgun, it was genuinely a formation reserved for obvious passing situations. By 2023, 52.7 percent of designed run plays came from shotgun, crossing the majority threshold for the first time. This shift in run-formation philosophy represents perhaps the most significant tactical evolution in the dataset, as it suggests that the NFL has fundamentally reconsidered whether traditional under center alignments are necessary for effective ground attacks. The 2025 data shows a modest pullback on run plays to 44.1 percent, reflecting a return to more traditional run concepts with heavier personnel as defenses improve their recognition and containment of shotgun run concepts.
+
+## The EPA Paradox
+
+![Shotgun usage rate vs. league-wide average EPA, 2011–2025](images/shotgun-epa-table.png){fig-align="center"}
+
+Data from 2023 quantifies the effect of defensive adaptation, as it represents the peak of shotgun usage at 72.2 percent but also the most negative average EPA year in the dataset at -0.035. Shotgun's advantages may be partially due to the favorable situations in which it is disproportionately used rather than to any intrinsic superiority of the formation itself. As more teams moved to predominantly use shotgun, its advantage has diminished. The ability of shotgun-heavy schemes to create more explosive plays has been neutralized by the widespread adoption of two high shells, among other defensive adjustments. Focusing on which situations each formation-play type generates superior expected outcomes provides the most impact for play-by-play decision making.
