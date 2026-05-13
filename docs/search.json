@@ -207,7 +207,7 @@
     "href": "app.html#the-app",
     "title": "Recommendation App",
     "section": "The App",
-    "text": "The App\n\n\n\n  \n    &lt;p&gt;Your browser does not support iframes. \n       &lt;a href=\"YOUR_SHINY_APP_URL_HERE\" target=\"_blank\"&gt;Open the app directly.&lt;/a&gt;\n    &lt;/p&gt;\n  \n\n\nHaving trouble loading? The app may take 15–30 seconds to start up if it has been idle. If it does not load, open it directly in a new tab."
+    "text": "The App\n\n\n\n  \n    &lt;p&gt;Your browser does not support iframes. \n       &lt;a href=\"https://chrisantosiewicz.shinyapps.io/nfl-formation-recommender/\" target=\"_blank\"&gt;Open the app directly.&lt;/a&gt;\n    &lt;/p&gt;\n  \n\n\nHaving trouble loading? The app may take 15–30 seconds to start up if it has been idle. If it does not load, open it directly in a new tab."
   },
   {
     "objectID": "descriptive_models.html",
