@@ -28,8 +28,10 @@ website:
         text: Model Validation
       - href: results.qmd
         text: Results & Key Findings
+      - href: limitations.qmd
+        text: Limitations  
       - href: app.qmd
-        text: Recommendation App
+        text: Play Recommender
 
 format:
   html:

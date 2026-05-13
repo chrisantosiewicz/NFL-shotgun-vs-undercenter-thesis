@@ -74,7 +74,7 @@ title: "Table of Contents"
 <div class="toc-section">
   <span class="toc-num">8</span>
   <div>
-    <a href="predictive_models.qmd">Predicting Best Play Calls</a>
+    <a href="predictive_models.qmd">Predictive Modeling</a>
     <span class="toc-desc">— Details the Random Forest architecture, QB quality score construction, the scramble contamination problem, the simulation framework, and the reliability lookup system.</span>
   </div>
 </div>
@@ -106,7 +106,7 @@ title: "Table of Contents"
 <div class="toc-section">
   <span class="toc-num">12</span>
   <div>
-    <a href="app.qmd">Recommendation App</a>
+    <a href="app.qmd">Play Recommender</a>
     <span class="toc-desc">— An embedded interactive Shiny application that takes game-situation inputs and returns ranked formation-play call recommendations with uncertainty estimates.</span>
   </div>
 </div>
