@@ -47,14 +47,14 @@ body {
 .navbar-brand:hover {
   color: #ffffff !important;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   letter-spacing: 0.01em;
 }
 
 .navbar-brand {
   white-space: normal;
   max-width: 95px;
-  font-size: 1.0rem;
+  font-size: 0.8rem;
   line-height: 1.2;
   justify-content: center;
 }
@@ -348,7 +348,7 @@ code {
   border: 2px solid var(--navy);
   border-radius: 6px;
   overflow: hidden;
-  margin: 2rem 0;
+  margin: 2rem -300px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
