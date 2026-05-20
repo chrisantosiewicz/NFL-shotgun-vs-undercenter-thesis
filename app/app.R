@@ -1,11 +1,3 @@
-#=======================
-#SHINY APP CREATION
-#=======================
-# ============================================
-# GLOBAL.R — Load everything once on startup
-# Save this as global.R in your app folder
-# ============================================
-
 library(shiny)
 library(shinydashboard)
 library(randomForest)
@@ -14,26 +6,10 @@ library(gridExtra)
 library(dplyr)
 library(scales)
 
+# Load functions
+source("functions.R")
 
-
-# Load all eight trained models
-rf_shotgun_pass      <- readRDS("models/rf_shotgun_pass.rds")
-rf_shotgun_run       <- readRDS("models/rf_shotgun_run.rds")
-rf_uc_pass           <- readRDS("models/rf_uc_pass.rds")
-rf_uc_run            <- readRDS("models/rf_uc_run.rds")
-rf_yards_shotgun_pass <- readRDS("models/rf_yards_shotgun_pass.rds")
-rf_yards_shotgun_run  <- readRDS("models/rf_yards_shotgun_run.rds")
-rf_yards_uc_pass      <- readRDS("models/rf_yards_uc_pass.rds")
-rf_yards_uc_run       <- readRDS("models/rf_yards_uc_run.rds")
-
-# Load residual stats
-residual_stats       <- readRDS("models/residual_stats.rds")
-yards_residual_stats <- readRDS("models/yards_residual_stats.rds")
-
-# Load reliability lookup
-reliability_lookup   <- readRDS("models/reliability_lookup.rds")
-
-# QB tier to score mapping
+# QB tier mapping
 tier_to_score <- c(
   "Elite"             = 1.40,
   "Above Average"     = 0.72,
@@ -42,23 +18,13 @@ tier_to_score <- c(
   "Replacement Level" = -1.20
 )
 
-# Formation colors used across all plots
+# Formation colors
 formation_colors <- c(
   "Shotgun Pass"      = "#0072B2",
   "Shotgun Run"       = "#009E73",
   "Under Center Pass" = "#D55E00",
   "Under Center Run"  = "#CC79A7"
 )
-
-# ============================================
-# SOURCE ALL HELPER FUNCTIONS
-# ============================================
-
-load("models/functions.RData")
-
-# ============================================
-# UI
-# ============================================
 
 ui <- dashboardPage(
   
