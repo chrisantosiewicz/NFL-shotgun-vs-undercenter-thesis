@@ -54,6 +54,7 @@ body {
 .navbar-brand {
   white-space: normal;
   max-width: 95px;
+  font-size: 1.0rem;
   line-height: 1.2;
   justify-content: center;
 }
@@ -61,7 +62,6 @@ body {
 .navbar-nav .nav-item {
   display: flex;
   align-items: stretch;
-  font-size: 1.2rem;
   width: 90;
   text-align: center;
   justify-content: center;
