@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "NFL Formation Tendency Analysis"
+  title: "NFL Formation Analysis"
   navbar:
     left:
       - href: index.qmd

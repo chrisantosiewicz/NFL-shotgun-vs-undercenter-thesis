@@ -51,11 +51,18 @@ body {
   letter-spacing: 0.01em;
 }
 
+.navbar-brand {
+  white-space: normal;
+  max-width: 150px;
+  line-height: 1.2;
+  justify-content: center;
+}
+
 .navbar-nav .nav-item {
   display: flex;
   align-items: stretch;
-  width: 125px;        /* adjust this value until the boxes look right */
   text-align: center;
+  width: 140px;
   justify-content: center;
 }
 
@@ -71,7 +78,6 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 100%;
 }
 
 .navbar-nav .nav-item {
