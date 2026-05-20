@@ -61,6 +61,7 @@ body {
 .navbar-nav .nav-item {
   display: flex;
   align-items: stretch;
+  width: 90;
   text-align: center;
   justify-content: center;
 }
